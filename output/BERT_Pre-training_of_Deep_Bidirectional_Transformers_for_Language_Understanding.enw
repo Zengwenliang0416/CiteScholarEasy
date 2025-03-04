@@ -1,0 +1,8 @@
+%0 Journal Article
+%T Bert: Pre-training of deep bidirectional transformers for language understanding
+%A J Devlin
+%A MW Chang
+%A K Lee
+%J … : human language …
+%X deep bidirectionality of BERT by evaluating two pretraining objectives using exactly the  same pretraining  No NSP: A bidirectional model which is trained using the “masked LM” (MLM)
+%U https://aclanthology.org/N19-1423/?utm_campaign=The%20Batch&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_m9bbH_7ECE1h3lZ3D61TYg52rKpifVNjL4fvJ85uqggrXsWDBTB7YooFLJeNXHWqhvOyC
