@@ -1,1 +1,117 @@
-Deep learning
+中共中央 国务院关于做好2022年全面推进乡村振兴重点工作的意见
+
+中共中央 国务院关于做好2023年全面推进乡村振兴重点工作的意见
+
+我国城镇化对农产品物流效率的影响
+
+我国农产品物流体系的重构和运作模式创新研究
+
+农产品冷链"最先一公里"的现状与趋势
+
+我国生鲜农产品冷链物流"最先一公里"发展探讨
+
+物联网环境下生鲜农产品配送路径优化研究
+
+考虑碳排放的生鲜农产品冷链物流配送路径优化研究
+
+碳排放规制下生鲜农产品配送车辆路径优化问题
+
+基于改进人工蜂群算法的生鲜农产品配送路径优化
+
+生鲜农产品多车型冷链物流车辆路径优化
+
+基于禁忌搜索算法的生鲜农产品冷链物流配送路径优化研究
+
+基于NSGA-Ⅱ的冷链物流配送路径多目标优化
+
+A general heuristic for vehicle routing problems
+
+Solving reverse logistics vehicle routing problem with time windows
+
+A hybrid search method for the vehicle routing problem with time windows
+
+Study on cold chain logistics of vehicle routing problem for agricultural products
+
+Artificial bee colony algorithm for fresh food distribution without quality loss by delivery route optimization
+
+Coordination of production and distribution planning
+
+Synchronized development of production, inventory, and distribution schedules
+
+On the integrated production, inventory, and distribution routing problem
+
+A reactive GRASP and path relinking for a combined production-distribution problem
+
+Fast heuristics for a combined production planning and vehicle routing problem
+
+A memetic algorithm with dynamic population management for an integrated production-distribution problem
+
+The integrated production-inventory-distribution routing problem
+
+A relaxation based solution approach for the inventory control and vehicle routing problem in vendor managed systems
+
+Heuristics for a multiperiod inventory routing problem with production decisions
+
+A branch-and-price algorithm for an integrated production and inventory routing problem
+
+Efficient formulations and a branch-and-cut algorithm for a production-routing problem
+
+Tabu search with path relinking for an integrated production-distribution problem
+
+Analysis of the maximum level policy in a production-distribution system
+
+Benders decomposition for production routing under demand uncertainty
+
+Optimization-based adaptive large neighborhood search for the production routing problem
+
+Formulations and branch and cut algorithms for multi-vehicle production and inventory routing problems
+
+A two-phase iterative heuristic approach for the production routing problem
+
+A branch-and-price algorithm for production routing problems with carbon cap-and-trade
+
+A variable neighborhood search heuristic algorithm for production routing problems
+
+Formulations and branch-and-cut algorithms for multi-product multi-vehicle production routing problems with startup cost
+
+A multi-phase heuristic for the production routing problem
+
+A Benders Decomposition Approach for the Multivehicle Production Routing Problem with Order-up-to-Level Policy
+
+A mathematical programming-based heuristic for the production routing problem with transshipments
+
+An infeasible space exploring matheuristic for the production routing problem
+
+An efficient three-level heuristic for the large-scaled multi-product production routing problem with outsourcing
+
+A Memetic Algorithm for the multi-product Production Routing Problem
+
+Improved benders-and-price algorithm for the multi-product assembly routing problem with time windows: A domain decomposition strategy for the benders-master model
+
+Integrated Production Inventory Routing Planning for Intelligent Food Logistics Systems
+
+Lot sizing versus batching in the production and distribution planning of perishable goods
+
+An adaptive large neighbourhood search for the operational integrated production and distribution problem of perishable products
+
+An efficient population-based simulated annealing algorithm for the multi-product multi-retailer perishable inventory routing problem
+
+Optimal production, replenishment, delivery, routing and inventory management policies for products with perishable inventory
+
+Integrated production inventory routing planning for intelligent food logistics systems
+
+The multi-plant perishable food production routing with packaging consideration
+
+Solving a large multi-product production-routing problem with delivery time windows
+
+Optimal joint replenishment, delivery and inventory management policies for perishable products
+
+Production routing for perishable products
+
+Logistics network design for perishable products with heterogeneous quality decay
+
+A two-echelon inventory routing problem for perishable products
+
+A multi-compartment electric vehicle routing problem with time windows and temperature and humidity settings for perishable product delivery
+
+A combined order selection and time-dependent vehicle routing problem with time windows for perishable product delivery
