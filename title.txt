@@ -1,0 +1,2 @@
+Attention is all you need
+BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
