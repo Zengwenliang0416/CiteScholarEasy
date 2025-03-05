@@ -648,7 +648,6 @@ class CiteDownloader:
                         # 访问 Google Scholar
                         print("访问 Google Scholar...")
                         driver.get("https://scholar.google.com/")
-                        self.random_sleep(1, 2)
                         
                         # 处理验证码
                         if "sorry" in driver.page_source.lower() or "请证明您不是机器人" in driver.page_source:
@@ -669,11 +668,9 @@ class CiteDownloader:
                         search_query = title
                         print(f"输入搜索词: {search_query}")
                         driver.execute_script("arguments[0].value = arguments[1];", search_box, search_query)
-                        self.random_sleep(0.5, 1)
                         
                         # 执行搜索
                         search_box.send_keys(Keys.RETURN)
-                        self.random_sleep(2, 3)
                         
                         # Check for CAPTCHA again
                         if "sorry" in driver.page_source.lower() or "请证明您不是机器人" in driver.page_source:
@@ -697,70 +694,47 @@ class CiteDownloader:
                         
                         for selector in selectors:
                             try:
-                                results = driver.find_elements(*selector)
-                                if results:
+                                elements = wait.until(EC.presence_of_all_elements_located(selector))
+                                if elements:
                                     print(f"使用选择器 {selector[1]} 找到结果")
+                                    results.extend(elements)
                                     break
-                            except Exception as e:
-                                print(f"选择器 {selector[1]} 失败: {str(e)}")
+                            except:
                                 continue
                         
                         if not results:
                             print("未找到搜索结果")
                             continue
-                        
+                            
                         print(f"找到 {len(results)} 个结果")
                         
-                        # Find the best matching result
+                        # Find best match
                         best_match = None
                         best_ratio = 0
                         for result in results:
                             try:
-                                # Try different title selectors
-                                title_selectors = [
-                                    (By.CLASS_NAME, "gs_rt"),  # 标准标题
-                                    (By.CSS_SELECTOR, "h3.gs_rt"),  # 带标签的标题
-                                    (By.CSS_SELECTOR, "a.gsc_a_at"),  # 替代标题链接
-                                    (By.TAG_NAME, "a")  # 任何链接
-                                ]
-                                
-                                result_title = None
-                                for title_selector in title_selectors:
-                                    try:
-                                        title_element = result.find_element(*title_selector)
-                                        result_title = title_element.text
-                                        if result_title:
-                                            break
-                                    except:
-                                        continue
-                                
-                                if not result_title:
-                                    continue
-                                    
-                                # Remove [PDF], [BOOK], etc. from title
-                                result_title = ' '.join([part for part in result_title.split() if not (part.startswith('[') and part.endswith(']'))])
-                                ratio = self.similarity_ratio(result_title, title)
+                                result_title = result.find_element(By.CLASS_NAME, "gs_rt").text
+                                ratio = self.similarity_ratio(title, result_title)
                                 print(f"比较: {result_title} (相似度: {ratio:.2f})")
                                 if ratio > best_ratio:
                                     best_ratio = ratio
                                     best_match = result
-                            except Exception as e:
-                                print(f"处理搜索结果时出错: {str(e)}")
+                            except:
                                 continue
                         
-                        if not best_match:
-                            print("未找到匹配的论文")
+                        if not best_match or best_ratio < 0.5:
+                            print("未找到匹配度足够高的论文")
                             continue
-                        
+                            
                         print(f"找到最佳匹配论文 (相似度: {best_ratio:.2f})")
                         
-                        # Try to find cite button with different selectors
+                        # Find cite button
                         cite_button = None
                         cite_selectors = [
-                            (By.CLASS_NAME, "gs_or_cit"),  # 标准引用按钮
-                            (By.CSS_SELECTOR, "a.gs_or_cit"),  # 带标签的引用按钮
-                            (By.XPATH, "//a[contains(@onclick, 'gs_ocit')]"),  # 基于onclick
-                            (By.XPATH, "//a[contains(text(), 'Cite')]")  # 基于文本
+                            (By.CLASS_NAME, "gs_or_cit"),
+                            (By.CSS_SELECTOR, "a.gs_or_cit"),
+                            (By.XPATH, "//a[contains(@onclick, 'gs_ocit')]"),
+                            (By.XPATH, "//a[contains(text(), 'Cite')]")
                         ]
                         
                         print("查找引用按钮...")
@@ -780,22 +754,16 @@ class CiteDownloader:
                         # Click cite button
                         print("点击引用按钮...")
                         try:
-                            # 直接使用 JavaScript 点击，更快速可靠
                             driver.execute_script("arguments[0].click();", cite_button)
                         except:
-                            # 如果 JavaScript 点击失败，回退到常规点击
                             action = ActionChains(driver)
                             action.move_to_element(cite_button)
                             action.click()
                             action.perform()
                         
-                        # 减少等待时间
-                        self.random_sleep(0.3, 0.5)
-                        
-                        # 使用更高效的选择器直接查找 EndNote 链接
+                        # Find EndNote link
                         print("查找 EndNote 链接...")
                         try:
-                            # 首选：直接通过 href 属性查找
                             endnote_link = wait.until(
                                 EC.element_to_be_clickable(
                                     (By.CSS_SELECTOR, "a[href*='citation?format=enw']")
@@ -803,7 +771,6 @@ class CiteDownloader:
                             )
                         except:
                             try:
-                                # 备选：通过文本内容查找
                                 endnote_link = wait.until(
                                     EC.element_to_be_clickable(
                                         (By.XPATH, "//a[contains(text(), 'EndNote')]")
@@ -813,7 +780,7 @@ class CiteDownloader:
                                 print("未找到 EndNote 链接")
                                 continue
                         
-                        # 直接使用 JavaScript 点击 EndNote 链接
+                        # Click EndNote link
                         print("下载 EndNote 格式引用...")
                         try:
                             driver.execute_script("arguments[0].click();", endnote_link)
