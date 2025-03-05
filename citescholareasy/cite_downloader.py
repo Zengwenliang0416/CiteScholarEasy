@@ -81,7 +81,14 @@ class CiteDownloader:
         retry_count = 0
         while retry_count < self.max_retries:
             try:
-                driver = uc.Chrome(options=self.options)
+                # 使用 selenium 原生的 Chrome WebDriver
+                from selenium import webdriver
+                from selenium.webdriver.chrome.service import Service
+                from webdriver_manager.chrome import ChromeDriverManager
+                
+                service = Service(ChromeDriverManager().install())
+                driver = webdriver.Chrome(service=service, options=self.options)
+                
                 # 测试连接是否正常
                 driver.get("about:blank")
                 return driver
