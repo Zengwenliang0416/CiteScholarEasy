@@ -1,8 +1,0 @@
-%0 Journal Article
-%T Attention is all you need
-%A A Vaswani
-%A N Shazeer
-%A N Parmar
-%J Advances in neural …
-%X to attend to all positions in the decoder up to and including that position. We need to prevent   We implement this inside of scaled dot-product attention by masking out (setting to −∞)
-%U https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html
